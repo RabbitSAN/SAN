@@ -15,3 +15,5 @@ set(SOURCE_FILES
  main3.c)
   
 add_executable(san ${SOURCE_FILES})
+
+target_link_libraries(san m)
