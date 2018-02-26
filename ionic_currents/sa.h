@@ -1,5 +1,4 @@
 // basic variables and descriptions
-// !!!!!!!!!!!! test for UNIVERSAL cell
 #ifndef SA_H
 #define SA_H 1
 
@@ -83,6 +82,5 @@ extern REAL ht;      					// Time step (ms)
 extern REAL t;       					// Time (ms)
 
 extern REAL fifna, fifk;
-//extern REAL cm,gna,gto,gsus,gkr,gks,gfna,gfk,gbna,gbca,gbk,ipss,knaca, kachical, kachicat, kachikach, gcal, gcat, icapmax, vc,vrel,vup,vsub,vi;
 
 #endif //ifndef SA_H

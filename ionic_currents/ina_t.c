@@ -35,7 +35,6 @@ REAL
 ina_t(struct State *S, struct State *Sn, REAL ht, struct Table T, struct Cpar *C, struct Nernst *nernst)
 {
   static int first=1; 
-  static REAL Ena; 
   static REAL tm[NTABLE],mss[NTABLE];
   static REAL th1[NTABLE],h1ss[NTABLE];
   static REAL th2[NTABLE],h2ss[NTABLE];
