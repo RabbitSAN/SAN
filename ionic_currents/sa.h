@@ -63,7 +63,7 @@ struct Tlocal { REAL to; REAL uo; REAL tn; REAL un; };
 #define ipssP	0.88				// nA  //INCREASED   
 #define knacaP	6.76923e-05		// nA  //INCREASED   
 
-#define gcalP    0.0506923*0.5  		// muS
+#define gcalP    0.0506923  		// muS
 #define gcatP    0.0106923   		// muS
 #define icapmaxP 0.066			   /*nA*/ //test
 

@@ -54,7 +54,7 @@ tssACH_fl( REAL ee, REAL *tau, REAL *ss )
 
 ////////////////////////////////////////////////////////////////////////
 REAL
-icalach_t(struct State *S, struct State *Sn, REAL ht, struct Table T,  struct Cpar *C, float ach )
+icalach_t(struct State *S, struct State *Sn, REAL ht, struct Table T,  struct Cpar *C, REAL ach )
 {
   static int first=1; 
   static REAL Ecal; 
