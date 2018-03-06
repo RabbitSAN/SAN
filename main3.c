@@ -114,6 +114,7 @@ fitotal(struct State *St, struct State *Stn,REAL ht, struct Cpar *Cp, struct Is 
   I->fito = ito_t(St, Stn, ht, T, Cp, nernst);
   I->fina = ina_t(St, Stn, ht, T, Cp, nernst);
 
+  if(1/* t>0 */) clocks('f');
 
   I->finaca = inaca(St, Stn, ht, Cp, Ca);
   I->fip = ip(St, Stn, ht, Cp);
@@ -207,13 +208,13 @@ int main(int argc, char **argv){
 #endif
 	FILE *fout_second = fopen( "out.txt", "w+" );
 	fprintf(fout_second, "#E\tnai\tki\tcai\tcasub\tcaup\tcarel\tibgna\tibgca\tibgk\tical\ticat\tif\tikr\tiks\tina\tinaca\tip\tisus\tito\tikach\ticap\tifna\tifk\n");
-  	int counter = 0;
+  
 
   	// time-stepping 
   	for( t=0; t<trun; t+=ht )
   	{
       	potentials(&Stn, &Ca, &nernst);	// Nernst potentials
-
+        basic_pars( -30, St.E, Stn.E, t, ht );
 
    	{
    		static float tgt=0.;
@@ -260,23 +261,24 @@ int main(int argc, char **argv){
        Stn.ki  = St.ki+ht* -1e6*(-2.*I.fip+I.fikr+I.fiks+I.fikach+I.fito+I.fisus+I.fifk+I.fibgk)/(FRD*Cp.vi);
 #endif
        
-       // tracking of the progress
+       /*// tracking of the progress
        counter += 1;
        if ((counter%100000) == 0)
        {
        		printf("Step #%d\n", counter);
-       }
+       }*/
 
     }//for_t
-	
+
 #if WRITEIC
 	FILE *fout = fopen( "state.dat", "w" );
 	fwrite( &Stn, sizeof(struct State), 1, fout);
 	fwrite( &Ca, sizeof(struct Caintra_state), 1, fout);
 	fclose(fout);
 #endif //WRITEIC
+    fclose(fout_second);
   	
-  	clocks('p');
-  	fclose(fout_second);
+    clocks('p');
+
 	return 0;
 }//main
